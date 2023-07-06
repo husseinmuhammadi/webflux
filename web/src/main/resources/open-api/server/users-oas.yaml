@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Users Service API - OpenAPI 3.0
+  description: Users API
+  version: 1.0.1
+servers:
+  - url: https://api-gateway-dev.liquid-entertainment.org/le/platform/users/v1
+    description: Development
+  - url: https://api-gateway-tst.liquid-entertainment.org/le/platform/users/v1
+    description: Test
+  - url: https://api-gateway-acc.liquid-entertainment.org/le/platform/users/v1
+    description: Acceptance
+  - url: https://api-gateway.liquid-entertainment.org/le/platform/users/v1
+    description: Production
+paths:
+  /users:
+    post:
+      tags:
+        - Users Endpoints
+      summary: Create a new user
+      description: Create a new user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+            examples:
+              Create UserRequestExample:
+                $ref: '#/components/examples/createUserRquestExample'
+      responses:
+        201:
+          description: User is created
+        500:
+          description: Internal Server Error
+components:
+  examples:
+    createUserRquestExample:
+      value:
+        userId: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        username: hmohammadi
+        password: Passw0rd
+        confirmPassword: Passw0rd
+      summary: CreateUserRequest example
+  schemas:
+    CreateUserRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        username:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+tags:
+  - name: Users Endpoints
+    description: Users Endpoints

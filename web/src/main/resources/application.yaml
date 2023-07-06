@@ -1,0 +1,14 @@
+
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/blog
+#      database:
+
+mongo:
+  uri: mongodb://localhost:27017/blog
+  db-name: blog
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
